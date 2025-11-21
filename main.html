@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="based-data">
+        <h3>Исходные данные</h3>
+
+        <div class="input-group">
+            <label for="W">Скорость самолёта W</label>
+            <input type="text" id="W" value="320">
+            <span class="unit">км/ч</span>
+        </div>
+
+        <div class="input-group">
+            <label for="l">Размер кадра l</label>
+            <div class="two-pick">
+                <input type="text" id="l_x" value="18">
+                <span class="multiply">х</span>
+                <input type="text" id="l_y" value="18">
+            </div>
+            <span class="unit">см</span>
+        </div>
+
+        <div class="input-group">
+            <label for="f">Фокусное расстояние f</label>
+            <input type="text" id="f" value="0.22">
+            <span class="unit">м</span>
+        </div>
+
+        <div class="input-group">
+            <label for="m">Масштаб аэрофотосъёмки m</label>
+            <input type="text" id="m" value="13200">
+        </div>
+
+        <div class="input-group">
+            <label for="M">Масштаб фотоплана M</label>
+            <input type="text" id="M" value="10000">
+        </div>
+
+        <div class="input-group">
+            <label for="px">Норм. перекрытие продольное p<sub>x</sub></label>
+            <input type="text" id="px" value="60">
+            <span class="unit">%</span>
+        </div>
+
+        <div class="input-group">
+            <label for="py">Норм. перекрытие поперечное p<sub>y</sub></label>
+            <input type="text" id="py" value="30">
+            <span class="unit">%</span>
+        </div>
+
+        <div class="input-group">
+            <label for="Lx">Длина участка по X (L<sub>x</sub>)</label>
+            <input type="text" id="Lx" value="25">
+            <span class="unit">км</span>
+        </div>
+
+        <div class="input-group">
+            <label for="Ly">Длина участка по Y (L<sub>y</sub>)</label>
+            <input type="text" id="Ly" value="30">
+            <span class="unit">км</span>
+        </div>
+
+        <div class="input-group">
+            <label for="Zmax">Макс. высота рельефа Z<sub>max</sub></label>
+            <input type="text" id="Zmax" value="212">
+            <span class="unit">м</span>
+        </div>
+
+        <div class="input-group">
+            <label for="Zmin">Мин. высота рельефа Z<sub>min</sub></label>
+            <input type="text" id="Zmin" value="182">
+            <span class="unit">м</span>
+    </div>
+
+    <hr>
+    <button id="getResults">Посчитать</button>
+    <button id="clearResults">Очистить результаты</button>
+    <hr>
+
+    <div class="results-data">
+        <h3>Расчётные результаты</h3>
+
+        <div class="result-row">
+            <span class="parametr">Площадь участка S</span>
+            <span class="value" id="S">Не вычислено</span>
+            <span class="unit">км<sup>2</sup></span>
+            <span class="step">Шаг 1</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Высота полёта H</span>
+            <span class="value" id="H">Не вычислено</span>
+            <span class="unit">м</span>
+            <span class="step">Шаг 2</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Продольное перекрытие P<sub>x</sub></span>
+            <span class="value" id="P_x">Не вычислено</span>
+            <span class="unit">%</span>
+            <span class="step">Шаг 3</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Поперечное перекрытие P<sub>y</sub></span>
+            <span class="value" id="P_y">Не вычислено</span>
+            <span class="unit">%</span>
+            <span class="step">Шаг 3</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Размер рабочей области по x, b<sub>x</sub></span>
+            <span class="value" id="b_x">Не вычислено</span>
+            <span class="unit">см</span>
+            <span class="step">Шаг 4</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Размер рабочей области по y, b<sub>y</sub></span>
+            <span class="value" id="b_y">Не вычислено</span>
+            <span class="unit">см</span>
+            <span class="step">Шаг 4</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Базис фотографирования B<sub>x</sub></span>
+            <span class="value" id="B_x">Не вычислено</span>
+            <span class="unit">м</span>
+            <span class="step">Шаг 5</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Расстояние между маршрутами B<sub>y</sub></span>
+            <span class="value" id="B_y">Не вычислено</span>
+            <span class="unit">м</span>
+            <span class="step">Шаг 5</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Количество маршрутов K</span>
+            <span class="value" id="K">Не вычислено</span>
+            <span class="unit">шт.</span>
+            <span class="step">Шаг 6 (округл. вверх)</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Снимков в маршруте n</span>
+            <span class="value" id="n">Не вычислено</span>
+            <span class="unit">шт.</span>
+            <span class="step">Шаг 7 (округл. вверх)</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Общее количество снимков N</span>
+            <span class="value" id="N">Не вычислено</span>
+            <span class="unit">шт.</span>
+            <span class="step">Шаг 8</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Длина пути самолёта L<sub>S</sub></span>
+            <span class="value" id="L_s">Не вычислено</span>
+            <span class="unit">км</span>
+            <span class="step">Шаг 9</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Время съёмки T<sub>S</sub></span>
+            <span class="value" id="T_s">Не вычислено</span>
+            <span class="unit">ч</span>
+            <span class="step">Шаг 10</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Максимальная выдержка t<sub>max</sub></span>
+            <span class="value" id="t_max">Не вычислено</span>
+            <span class="unit">с</span>
+            <span class="step">Шаг 11</span>
+        </div>
+
+        <div class="result-row">
+            <span class="parametr">Интервал съёмки r</span>
+            <span class="value" id="r">Не вычислено</span>
+            <span class="unit">с</span>
+            <span class="step">Шаг 12</span>
+        </div>
+    </div>
+</div>
+
+<span id="me"><i>/ Залюбивский Б.С. / РСБО-02-24 / Лаб.2 - ТДЗЗиФ / </i></span>
+</body>
+<script src="scripts.js"></script>
+</html>
