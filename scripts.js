@@ -57,10 +57,10 @@ function result() {
         T_s = fix(L_s / W),
 
     // 11 шаг
-        t_max = fix(0.0001 * M / (W / 3.6)),
+        t_max = fix(0.0001 *  M / (W / 3.6)),
 
     // 12 шаг
-        r = fix(B_x / (W / 3.6));
+        r = fix(0.0001 * B_x / (W / 3.6));
 
     document.getElementById("S").innerText = S;
     document.getElementById("H").innerText = H;
